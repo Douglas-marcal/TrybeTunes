@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 
 class Login extends Component {
@@ -8,9 +9,23 @@ class Login extends Component {
     this.state = {
       name: '',
       isInvalidName: true,
+      isLoading: false,
+      redirect: false,
     };
 
+    this.onClickButtonLogin = this.onClickButtonLogin.bind(this);
     this.verifyName = this.verifyName.bind(this);
+  }
+
+  onClickButtonLogin() {
+    const { name } = this.state;
+    this.setState(() => ({
+      isLoading: true,
+    }), () => createUser({ name }).then(() => {
+      this.setState(() => ({
+        redirect: true,
+      }));
+    }));
   }
 
   verifyName({ target: { value } }) {
@@ -26,22 +41,31 @@ class Login extends Component {
   }
 
   render() {
-    const { isInvalidName, name } = this.state;
+    const { isInvalidName, isLoading, redirect } = this.state;
     return (
       <div data-testid="page-login">
-        <input
-          data-testid="login-name-input"
-          type="text"
-          onChange={ this.verifyName }
-        />
-        <button
-          data-testid="login-submit-button"
-          type="button"
-          disabled={ isInvalidName }
-          onClick={ () => createUser({ name }) }
-        >
-          Entrar
-        </button>
+        {
+          redirect && <Redirect to="/search" />
+        }
+        {isLoading ? <h1>Carregando...</h1> : (
+          <form>
+
+            <input
+              data-testid="login-name-input"
+              type="text"
+              onChange={ this.verifyName }
+            />
+
+            <button
+              data-testid="login-submit-button"
+              type="button"
+              disabled={ isInvalidName }
+              onClick={ this.onClickButtonLogin }
+            >
+              Entrar
+            </button>
+
+          </form>)}
       </div>
     );
   }
