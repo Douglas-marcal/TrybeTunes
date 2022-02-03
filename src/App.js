@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Login, Search } from './pages';
+import { Album, Login, Search } from './pages';
 
 class App extends React.Component {
   render() {
@@ -10,6 +10,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={ Login } />
           <Route path="/search" component={ Search } />
+          <Route path="/album/:id" component={ Album } />
         </Switch>
       </BrowserRouter>
     );
