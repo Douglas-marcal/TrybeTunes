@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Login from './pages';
+import { Login, Search } from './pages';
 
 class App extends React.Component {
   render() {
@@ -9,6 +9,7 @@ class App extends React.Component {
         <p>TrybeTunes</p>
         <Switch>
           <Route exact path="/" component={ Login } />
+          <Route path="/search" component={ Search } />
         </Switch>
       </BrowserRouter>
     );

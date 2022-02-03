@@ -1,3 +1,4 @@
 import Login from './Login';
+import Search from './Search';
 
-export default Login;
+export { Login, Search };
