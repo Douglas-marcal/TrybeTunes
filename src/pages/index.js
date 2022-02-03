@@ -1,5 +1,6 @@
+import Album from './Album';
+import Favorites from './Favorites';
 import Login from './Login';
 import Search from './Search';
-import Album from './Album';
 
-export { Login, Search, Album };
+export { Album, Favorites, Login, Search };
