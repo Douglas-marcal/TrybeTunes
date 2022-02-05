@@ -5,18 +5,23 @@
 }
 
 .container-login {
-  align-items: center;
   background-color: rgba(0, 0, 0, 0.582);
   display: flex;
   justify-content: center;
   min-height: 100vh;
-
 }
 
 .form-container {
   align-items: center;
   background-color: black;
+  border-radius: 20px;
+  box-shadow: 2px 5px 10px 5px rgba(0, 0, 255, 0.425);
   display: flex;
   justify-content: center;
   padding: 25vh;
+}
+
+h1 {
+  padding: 50px;
+  text-align: center;
 }
