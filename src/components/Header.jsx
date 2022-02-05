@@ -7,7 +7,6 @@ class Header extends Component {
     super();
 
     this.state = {
-      name: '',
       isLoading: false,
     };
 
