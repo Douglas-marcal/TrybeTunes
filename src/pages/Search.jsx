@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Header } from '../components';
+import searchAlbums from '../services/searchAlbumsAPI';
 
 class Search extends Component {
   constructor() {
@@ -8,15 +9,28 @@ class Search extends Component {
     this.state = {
       buttonDisabled: true,
       textFieldLetters: '',
+      artists: '',
     };
 
     this.validateInput = this.validateInput.bind(this);
+    this.requestAPI = this.requestAPI.bind(this);
+  }
+
+  requestAPI() {
+    this.setState((prev) => ({
+      artists: prev.textFieldLetters,
+      buttonDisabled: prev.textFieldLetters.length < 2,
+      textFieldLetters: '',
+    }), () => {
+      const { artists } = this.state;
+      searchAlbums(artists).then((data) => console.log(data));
+    });
   }
 
   validateInput({ target: { value } }) {
     this.setState(() => ({
       textFieldLetters: value,
-    }), () => this.setState((prevState) => ({
+    }), this.setState((prevState) => ({
       buttonDisabled: prevState.textFieldLetters.length < 2,
     })));
   }
@@ -37,6 +51,7 @@ class Search extends Component {
             data-testid="search-artist-button"
             type="button"
             disabled={ buttonDisabled }
+            onClick={ this.requestAPI }
           >
             Pesquisar
           </button>
