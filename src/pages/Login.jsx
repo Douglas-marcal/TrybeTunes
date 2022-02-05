@@ -48,25 +48,28 @@ class Login extends Component {
         {
           redirect && <Redirect to="/search" />
         }
-        {isLoading ? <Loading /> : (
-          <form>
 
-            <input
-              data-testid="login-name-input"
-              type="text"
-              onChange={ this.verifyName }
-            />
+        {
+          isLoading ? <Loading /> : (
+            <form>
 
-            <button
-              data-testid="login-submit-button"
-              type="button"
-              disabled={ isInvalidName }
-              onClick={ this.onClickButtonLogin }
-            >
-              Entrar
-            </button>
+              <input
+                data-testid="login-name-input"
+                type="text"
+                onChange={ this.verifyName }
+              />
 
-          </form>)}
+              <button
+                data-testid="login-submit-button"
+                type="button"
+                disabled={ isInvalidName }
+                onClick={ this.onClickButtonLogin }
+              >
+                Entrar
+              </button>
+
+            </form>)
+        }
       </div>
     );
   }
