@@ -8,11 +8,11 @@ class Search extends Component {
     super();
 
     this.state = {
-      buttonDisabled: true,
-      textFieldLetters: '',
       artists: '',
+      buttonDisabled: true,
       isLoading: false,
       responseAPI: false,
+      textFieldLetters: '',
     };
 
     this.validateInput = this.validateInput.bind(this);
@@ -20,10 +20,10 @@ class Search extends Component {
   }
 
   requestAPI() {
-    this.setState((prev) => ({
+    this.setState(({ textFieldLetters }) => ({
       isLoading: true,
-      artists: prev.textFieldLetters,
-      buttonDisabled: prev.textFieldLetters.length < 2,
+      artists: textFieldLetters,
+      buttonDisabled: textFieldLetters.length < 2,
       textFieldLetters: '',
     }), () => {
       const { artists } = this.state;
@@ -40,19 +40,19 @@ class Search extends Component {
   validateInput({ target: { value } }) {
     this.setState(() => ({
       textFieldLetters: value,
-    }), () => this.setState((prevState) => ({
-      buttonDisabled: prevState.textFieldLetters.length < 2,
+    }), () => this.setState(({ textFieldLetters }) => ({
+      buttonDisabled: textFieldLetters.length < 2,
     })));
   }
 
   render() {
     const {
-      buttonDisabled,
-      textFieldLetters,
-      isLoading,
-      artists,
-      responseAPI,
       albums,
+      artists,
+      buttonDisabled,
+      isLoading,
+      responseAPI,
+      textFieldLetters,
     } = this.state;
     return (
       <div data-testid="page-search">
@@ -81,21 +81,26 @@ class Search extends Component {
         }
 
         {
-          responseAPI && (
+          (responseAPI && albums.length) && (
             <div>
               <h3>{`Resultado de álbuns de: ${artists}`}</h3>
               <div>
                 {
-                  albums.map((album) => (
+                  albums.map(({
+                    collectionId,
+                    artistName,
+                    collectionName,
+                    artworkUrl100,
+                  }) => (
                     <Link
-                      data-testid={ `link-to-album-${album.collectionId}` }
-                      to={ `/album/${album.collectionId}` }
-                      key={ album.collectionId }
+                      data-testid={ `link-to-album-${collectionId}` }
+                      to={ `/album/${collectionId}` }
+                      key={ collectionId }
                     >
                       <div>
-                        <h3>{album.artistName}</h3>
-                        <h5>{album.collectionName}</h5>
-                        <img src={ album.artworkUrl100 } alt={ album.collectionName } />
+                        <h3>{artistName}</h3>
+                        <h5>{collectionName}</h5>
+                        <img src={ artworkUrl100 } alt={ collectionName } />
                       </div>
                     </Link>
                   ))
@@ -103,6 +108,10 @@ class Search extends Component {
               </div>
             </div>
           )
+        }
+
+        {
+          (responseAPI && !albums.length) && <h1>Nenhum álbum foi encontrado</h1>
         }
       </div>
     );
