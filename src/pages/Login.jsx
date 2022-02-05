@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
-import Loading from '../components';
+import { Loading } from '../components';
 
 class Login extends Component {
   constructor() {

@@ -1,3 +1,4 @@
+import Header from './Header';
 import Loading from './Loading';
 
-export default Loading;
+export { Header, Loading };
