@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import { Loading } from '../components';
+import '../styles/Login.css';
 
 class Login extends Component {
   constructor() {
@@ -44,14 +45,14 @@ class Login extends Component {
   render() {
     const { isInvalidName, isLoading, redirect } = this.state;
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="container-login">
         {
           redirect && <Redirect to="/search" />
         }
 
         {
           isLoading ? <Loading /> : (
-            <form>
+            <form className="form-container">
 
               <input
                 data-testid="login-name-input"
