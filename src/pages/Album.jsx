@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Header } from '../components';
+import { Header, MusicCard } from '../components';
 import getMusics from '../services/musicsAPI';
 
 class Album extends Component {
@@ -39,6 +39,7 @@ class Album extends Component {
         <Header />
         <h2 data-testid="artist-name">{artistName}</h2>
         <h3 data-testid="album-name">{collectionName}</h3>
+        <MusicCard playlist={ musics } />
       </div>
     );
   }
