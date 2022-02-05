@@ -40,8 +40,10 @@ class Header extends Component {
             <Link to="/search">
               <li data-testid="link-to-search">Pesquisa</li>
             </Link>
-            {/* <li></li>
-            <li></li> */}
+            <Link to="/favorites">
+              <li data-testid="link-to-favorites">Favoritos</li>
+            </Link>
+            {/*  <li></li> */}
           </ul>
         </nav>
       </header>
