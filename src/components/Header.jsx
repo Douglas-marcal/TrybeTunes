@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getUser } from '../services/userAPI';
+import Loading from './Loading';
 
 class Header extends Component {
   constructor() {
@@ -7,6 +8,7 @@ class Header extends Component {
 
     this.state = {
       name: '',
+      isLoading: false,
     };
 
     this.getUserName = this.getUserName.bind(this);
@@ -17,16 +19,22 @@ class Header extends Component {
   }
 
   getUserName() {
-    getUser().then(({ name }) => {
-      this.setState(() => ({ name }));
+    this.setState({ isLoading: true }, () => {
+      getUser().then(({ name }) => {
+        this.setState(() => ({ name, isLoading: false }));
+      });
     });
   }
 
   render() {
-    const { name } = this.state;
+    const { name, isLoading } = this.state;
     return (
       <header data-testid="header-component">
-        <h4>{name}</h4>
+        {
+          isLoading
+            ? <Loading />
+            : (<h4 data-testid="header-user-name">{name}</h4>)
+        }
       </header>
     );
   }
