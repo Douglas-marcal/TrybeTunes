@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header-container {
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  min-height: 65px;
+  padding: 0 80px;
+}
+
+.menu-container {
+  display: flex;
+  list-style: none;
+  order: 1;
+}
+
+.menu-container a {
+  color: white;
+  font-size: small;
+  margin-left: 2px;
+  padding-left: 20px;
+  text-decoration: none;
+  transition: 300ms;
+}
+
+.menu-container a:hover {
+  color: blue;
+}
+
+.user-name {
+  order: 2;
+}
+
+.separator {
+  font-weight: 300;
+  padding: 20px;
+}
+
+.nav-bar {
+  align-items: center;
+  display: flex;
+}
