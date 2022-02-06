@@ -7,9 +7,11 @@ class ProfileEdit extends Component {
     super();
     this.state = {
       isLoading: true,
+      isDisabled: true,
     };
 
     this.updateInfos = this.updateInfos.bind(this);
+    this.checkButton = this.checkButton.bind(this);
   }
 
   componentDidMount() {
@@ -19,12 +21,24 @@ class ProfileEdit extends Component {
     });
   }
 
+  checkButton() {
+    const { name, email, image, description } = this.state;
+    if (
+      name.length > 0
+      && (email.length > 0 && email.includes('@'))
+      && image.length > 0
+      && description.length > 0
+    ) {
+      this.setState({ isDisabled: false });
+    }
+  }
+
   updateInfos({ target: { value, name } }) {
-    this.setState(() => ({ [name]: value }));
+    this.setState(() => ({ [name]: value }), () => this.checkButton());
   }
 
   render() {
-    const { isLoading, name, email, description, image } = this.state;
+    const { isLoading, name, email, description, image, isDisabled } = this.state;
     return (
       <div data-testid="page-profile-edit">
         <Header />
@@ -70,7 +84,8 @@ class ProfileEdit extends Component {
               <button
                 data-testid="edit-button-save"
                 type="button"
-                onClick={ this.updateUserInfos }
+                onClick={ this.saveChanges }
+                disabled={ isDisabled }
               >
                 Salvar alterações
               </button>
