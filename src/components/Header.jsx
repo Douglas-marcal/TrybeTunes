@@ -35,7 +35,7 @@ class Header extends Component {
         <div className="nav-bar">
           {
             isLoading
-              ? <Loading />
+              ? <Loading isHeader />
               : (
                 <h4
                   data-testid="header-user-name"
