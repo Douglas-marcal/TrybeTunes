@@ -56,16 +56,21 @@ class Login extends Component {
               <h1>Aqui só toca SUCESSO!</h1>
 
               <form className="form-container">
-
-                <input
-                  data-testid="login-name-input"
-                  type="text"
-                  onChange={ this.verifyName }
-                />
+                <label htmlFor="name-input">
+                  Digite seu nome:
+                  <input
+                    data-testid="login-name-input"
+                    type="text"
+                    id="name-input"
+                    className="name-input"
+                    onChange={ this.verifyName }
+                  />
+                </label>
 
                 <button
                   data-testid="login-submit-button"
                   type="button"
+                  className="submit-button"
                   disabled={ isInvalidName }
                   onClick={ this.onClickButtonLogin }
                 >
