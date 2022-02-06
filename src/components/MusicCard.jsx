@@ -9,7 +9,7 @@ class MusicCard extends Component {
         {
           playlist
             .filter(({ trackName }) => trackName)
-            .map(({ trackName, previewUrl, trackNumber }) => (
+            .map(({ trackName, previewUrl, trackNumber, trackId }) => (
               <div key={ trackNumber }>
                 <p>{trackName}</p>
                 <audio data-testid="audio-component" src={ previewUrl } controls>
@@ -19,6 +19,13 @@ class MusicCard extends Component {
                   <code>audio</code>
                   .
                 </audio>
+                <label htmlFor="favorite-song">
+                  <input
+                    data-testid={ `checkbox-music-${trackId}` }
+                    type="checkbox"
+                    id="favorite-song"
+                  />
+                </label>
               </div>
             ))
         }
