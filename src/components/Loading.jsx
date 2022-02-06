@@ -13,7 +13,7 @@ class Loading extends Component {
             Carregando...
           </h4>
         ) : (
-          <h1 className="loading-content loading-login">Carregando...</h1>
+          <h1 className="loading-content">Carregando...</h1>
         )
     );
   }
