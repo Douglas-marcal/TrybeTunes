@@ -25,7 +25,7 @@ class ProfileEdit extends Component {
   }
 
   render() {
-    const { isLoading, name, email } = this.state;
+    const { isLoading, name, email, description } = this.state;
     return (
       <div data-testid="page-profile-edit">
         <Header />
@@ -48,6 +48,15 @@ class ProfileEdit extends Component {
                 value={ email }
                 onChange={ this.updateInfos }
                 placeholder="E-mail"
+              />
+
+              <input
+                data-testid="edit-input-description"
+                type="text"
+                name="description"
+                value={ description }
+                onChange={ this.updateInfos }
+                placeholder="Descrição"
               />
 
             </form>
