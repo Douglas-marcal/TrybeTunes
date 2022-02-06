@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { bool } from 'prop-types';
 import '../styles/Loading.css';
 
 class Loading extends Component {
@@ -17,5 +18,13 @@ class Loading extends Component {
     );
   }
 }
+
+Loading.propTypes = {
+  isHeader: bool,
+};
+
+Loading.defaultProps = {
+  isHeader: false,
+};
 
 export default Loading;
