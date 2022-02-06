@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Header, Loading } from '../components';
 import { getUser } from '../services/userAPI';
 
@@ -33,6 +34,8 @@ class Profile extends Component {
                 src={ userInfo.image }
                 alt={ `Foto de ${userInfo.name}` }
               />
+
+              <Link to="/profile/edit"><button type="button">Editar perfil</button></Link>
 
               <p>
                 <span>Nome: </span>
