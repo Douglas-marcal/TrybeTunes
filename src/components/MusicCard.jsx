@@ -8,7 +8,7 @@ class MusicCard extends Component {
     super(props);
 
     this.state = {
-      isLoading: false,
+      isLoading: true,
       songData: [],
     };
 
@@ -17,7 +17,7 @@ class MusicCard extends Component {
 
   componentDidMount() {
     getFavoriteSongs().then((songData) => {
-      this.setState(() => ({ songData }));
+      this.setState(() => ({ songData, isLoading: false }));
     });
   }
 
