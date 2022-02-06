@@ -7,7 +7,6 @@ class ProfileEdit extends Component {
     super();
     this.state = {
       isLoading: true,
-      userInfo: {},
     };
 
     this.updateInfos = this.updateInfos.bind(this);
@@ -25,7 +24,7 @@ class ProfileEdit extends Component {
   }
 
   render() {
-    const { isLoading, name, email, description } = this.state;
+    const { isLoading, name, email, description, image } = this.state;
     return (
       <div data-testid="page-profile-edit">
         <Header />
@@ -58,6 +57,23 @@ class ProfileEdit extends Component {
                 onChange={ this.updateInfos }
                 placeholder="Descrição"
               />
+
+              <input
+                data-testid="edit-input-image"
+                type="text"
+                name="image"
+                value={ image }
+                onChange={ this.updateInfos }
+                placeholder="Imagem"
+              />
+
+              <button
+                data-testid="edit-button-save"
+                type="button"
+                onClick={ this.updateUserInfos }
+              >
+                Salvar alterações
+              </button>
 
             </form>
           )
