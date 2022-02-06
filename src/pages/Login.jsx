@@ -56,16 +56,14 @@ class Login extends Component {
               <h1>Aqui só toca SUCESSO!</h1>
 
               <form className="form-container">
-                <label htmlFor="name-input">
-                  Digite seu nome:
-                  <input
-                    data-testid="login-name-input"
-                    type="text"
-                    id="name-input"
-                    className="name-input"
-                    onChange={ this.verifyName }
-                  />
-                </label>
+                <input
+                  data-testid="login-name-input"
+                  type="text"
+                  id="name-input"
+                  className="name-input"
+                  placeholder="Nome"
+                  onChange={ this.verifyName }
+                />
 
                 <button
                   data-testid="login-submit-button"
