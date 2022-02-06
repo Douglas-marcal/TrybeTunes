@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import '../styles/Loading.css';
 
 class Loading extends Component {
   render() {
     return (
-      <div>
-        <h1>Carregando...</h1>
-      </div>
+      <h4 className="loading">
+        <span className="separator">|</span>
+        Carregando...
+      </h4>
     );
   }
 }
