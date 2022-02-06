@@ -14,35 +14,41 @@ class MusicCard extends Component {
 
     this.addFavoriteSong = this.addFavoriteSong.bind(this);
     this.removeFavoriteSong = this.removeFavoriteSong.bind(this);
+    this.getFavoriteSong = this.getFavoriteSong.bind(this);
   }
 
   componentDidMount() {
+    this.getFavoriteSong();
+  }
+
+  getFavoriteSong() {
     getFavoriteSongs().then((songData) => {
       this.setState(() => ({ songData, isLoading: false }));
     });
   }
 
-  addFavoriteSong({ target: { id } }) {
-    this.setState({ isLoading: true });
-    const { playlist } = this.props;
-    const objectSong = playlist.find(({ trackId }) => +trackId === +id);
-    addSong(objectSong).then(() => {
-      this.setState((prevState) => ({
-        isLoading: false,
-        songData: [...prevState.songData, objectSong],
-      }
-      ));
-    });
+  addFavoriteSong({ target: { checked, id } }) {
+    if (checked) {
+      this.setState({ isLoading: true });
+      const { playlist } = this.props;
+      const objectSong = playlist.find(({ trackId }) => +trackId === +id);
+      addSong(objectSong).then(() => {
+        this.setState((prevState) => ({
+          isLoading: false,
+          songData: [...prevState.songData, objectSong],
+        }
+        ));
+      });
+    }
   }
 
   removeFavoriteSong({ target: { checked, id } }) {
     if (!checked) {
+      this.setState({ isLoading: true });
       const { playlist } = this.props;
       const objectSong = playlist.find(({ trackId }) => +id === +trackId);
       removeSong(objectSong).then(() => {
-        this.setState(({ songData: prevSongData }) => ({
-          songData: prevSongData.filter(({ trackId }) => +trackId !== +id),
-        }));
+        this.getFavoriteSong();
       });
     }
   }
