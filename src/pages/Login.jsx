@@ -47,7 +47,7 @@ class Login extends Component {
     if (redirect) return (<Redirect to="/search" />);
     return (
       isLoading ? <Loading /> : (
-        <div tested="page-login" className="container-login">
+        <div data-testid="page-login" className="container-login">
 
           <div>
 
