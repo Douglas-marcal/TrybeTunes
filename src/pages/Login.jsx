@@ -44,44 +44,42 @@ class Login extends Component {
 
   render() {
     const { isInvalidName, isLoading, redirect } = this.state;
+    if (redirect) return (<Redirect to="/search" />);
     return (
-      <div data-testid="page-login" className="container-login">
-        {
-          redirect && <Redirect to="/search" />
-        }
-        {
-          isLoading ? <Loading /> : (
-            <div>
+      isLoading ? <Loading /> : (
+        <div tested="page-login" className="container-login">
 
-              <h1>Aqui só toca SUCESSO!</h1>
+          <div>
 
-              <form className="form-container">
-                <input
-                  data-testid="login-name-input"
-                  type="text"
-                  id="name-input"
-                  className="name-input"
-                  placeholder="Nome"
-                  onChange={ this.verifyName }
-                />
+            <h1>Aqui só toca SUCESSO!</h1>
 
-                <button
-                  data-testid="login-submit-button"
-                  type="button"
-                  className="submit-button"
-                  disabled={ isInvalidName }
-                  onClick={ this.onClickButtonLogin }
-                >
-                  Entrar
-                </button>
+            <form className="form-container">
+              <input
+                data-testid="login-name-input"
+                type="text"
+                id="name-input"
+                className="name-input"
+                placeholder="Nome"
+                onChange={ this.verifyName }
+              />
 
-              </form>
+              <button
+                data-testid="login-submit-button"
+                type="button"
+                className="submit-button"
+                disabled={ isInvalidName }
+                onClick={ this.onClickButtonLogin }
+              >
+                Entrar
+              </button>
 
-            </div>
+            </form>
 
-          )
-        }
-      </div>
+          </div>
+
+        </div>
+      )
+
     );
   }
 }
