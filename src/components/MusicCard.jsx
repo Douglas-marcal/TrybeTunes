@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends Component {
@@ -13,6 +13,12 @@ class MusicCard extends Component {
     };
 
     this.addFavoriteSong = this.addFavoriteSong.bind(this);
+  }
+
+  componentDidMount() {
+    getFavoriteSongs().then((songData) => {
+      this.setState(() => ({ songData }));
+    });
   }
 
   addFavoriteSong({ target: { id } }) {
@@ -57,7 +63,8 @@ class MusicCard extends Component {
                           id={ trackId }
                           onChange={ this.addFavoriteSong }
                           checked={
-                            songData.some(({ trackId: songID }) => songID === trackId)
+                            songData
+                              .some(({ trackId: songID }) => songID === trackId)
                           }
                         />
                       </label>
