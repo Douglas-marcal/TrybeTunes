@@ -10,24 +10,36 @@ class Favorites extends Component {
       isLoading: true,
       favoriteSongs: [],
     };
+
+    this.updateFavoriteSongs = this.updateFavoriteSongs.bind(this);
+    this.getFavoriteSong = this.getFavoriteSong.bind(this);
   }
 
   componentDidMount() {
+    this.getFavoriteSong();
+  }
+
+  getFavoriteSong() {
     getFavoriteSongs().then((favoriteSongs) => {
-      this.setState(() => ({
+      this.setState({
         favoriteSongs,
         isLoading: false,
-      }));
+      });
     });
+  }
+
+  updateFavoriteSongs() {
+    this.getFavoriteSong();
   }
 
   render() {
     const { isLoading, favoriteSongs } = this.state;
+    this.updateFavoriteSongs();
     return (
       <div data-testid="page-favorites">
         <Header />
         {
-          isLoading ? <Loading /> : <MusicCard playlist={favoriteSongs}/>
+          isLoading ? <Loading /> : <MusicCard playlist={ favoriteSongs } />
         }
       </div>
     );
