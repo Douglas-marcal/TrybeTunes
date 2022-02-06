@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends Component {
@@ -13,6 +13,7 @@ class MusicCard extends Component {
     };
 
     this.addFavoriteSong = this.addFavoriteSong.bind(this);
+    this.removeFavoriteSong = this.removeFavoriteSong.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +33,18 @@ class MusicCard extends Component {
       }
       ));
     });
+  }
+
+  removeFavoriteSong({ target: { checked, id } }) {
+    if (!checked) {
+      const { playlist } = this.props;
+      const objectSong = playlist.find(({ trackId }) => +id === +trackId);
+      removeSong(objectSong).then(() => {
+        this.setState(({ songData: prevSongData }) => ({
+          songData: prevSongData.filter(({ trackId }) => +trackId !== +id),
+        }));
+      });
+    }
   }
 
   render() {
@@ -61,7 +74,10 @@ class MusicCard extends Component {
                           data-testid={ `checkbox-music-${trackId}` }
                           type="checkbox"
                           id={ trackId }
-                          onChange={ this.addFavoriteSong }
+                          onChange={ (event) => {
+                            this.addFavoriteSong(event);
+                            this.removeFavoriteSong(event);
+                          } }
                           checked={
                             songData
                               .some(({ trackId: songID }) => songID === trackId)
