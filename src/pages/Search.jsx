@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Loading } from '../components';
 import searchAlbums from '../services/searchAlbumsAPI';
+import '../styles/Search.css';
 
 class Search extends Component {
   constructor() {
@@ -55,22 +56,24 @@ class Search extends Component {
       textFieldLetters,
     } = this.state;
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="page-search">
         <Header />
         {
           isLoading
             ? <Loading />
             : (
-              <form>
+              <form className="search-container">
                 <input
                   data-testid="search-artist-input"
                   type="text"
+                  className="input-artist"
                   value={ textFieldLetters }
                   onChange={ this.validateInput }
                 />
                 <button
                   data-testid="search-artist-button"
                   type="button"
+                  className="button-search"
                   disabled={ buttonDisabled }
                   onClick={ this.requestAPI }
                 >

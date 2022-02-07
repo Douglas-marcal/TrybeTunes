@@ -1,0 +1,32 @@
+.search-container {
+  text-align: center;
+}
+
+.input-artist {
+  border: none;
+  border-radius: 3px;
+  font-weight: 600;
+  margin: 7px 5px;
+  outline: none;
+  padding: 5px;
+}
+
+.button-search {
+  background-color: rgb(22, 25, 190);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 5px;
+  transition: 400ms;
+}
+
+.button-search:hover {
+  background-color: rgba(9, 13, 243, 0.5);
+}
+
+.page-search {
+  background-color: #809bce;
+  min-height: 100vh;
+}
