@@ -1,4 +1,4 @@
-.search-container, .result-title {
+.search-container, .result-title, .album {
   text-align: center;
 }
 
@@ -45,11 +45,29 @@
 .album {
   background-color: rgba(255, 255, 255, 0.616);
   border-radius: 8px;
+  box-shadow: 5px 5px 5px black;
   color: black;
-  display: block;
+  cursor: pointer;
   flex-basis: 30%;
   flex-grow: 1;
   margin: 10px;
   padding: 10px;
   text-decoration: none;
+  transition: 400ms;
+}
+
+.album:hover {
+  background-color: rgba(255, 255, 255, 0.356);
+}
+
+.album-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.album-container img {
+  max-width: 100px;
 }

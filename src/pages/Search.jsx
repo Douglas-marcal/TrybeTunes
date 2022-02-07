@@ -102,7 +102,7 @@ class Search extends Component {
                       to={ `/album/${collectionId}` }
                       key={ collectionId }
                     >
-                      <div>
+                      <div className="album-container">
                         <h3>{artistName}</h3>
                         <h5>{collectionName}</h5>
                         <img src={ artworkUrl100 } alt={ collectionName } />
