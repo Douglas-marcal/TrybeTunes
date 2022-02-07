@@ -67,6 +67,7 @@ class Search extends Component {
                   data-testid="search-artist-input"
                   type="text"
                   className="input-artist"
+                  placeholder="Nome do artista ou banda"
                   value={ textFieldLetters }
                   onChange={ this.validateInput }
                 />
@@ -85,9 +86,9 @@ class Search extends Component {
 
         {
           (responseAPI && albums.length) && (
-            <div>
-              <h3>{`Resultado de álbuns de: ${artists}`}</h3>
-              <div>
+            <div className="results-container">
+              <h3 className="result-title">{`Resultado de álbuns de: ${artists}`}</h3>
+              <div className="albums-container">
                 {
                   albums.map(({
                     collectionId,
@@ -97,6 +98,7 @@ class Search extends Component {
                   }) => (
                     <Link
                       data-testid={ `link-to-album-${collectionId}` }
+                      className="album"
                       to={ `/album/${collectionId}` }
                       key={ collectionId }
                     >

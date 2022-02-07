@@ -1,4 +1,4 @@
-.search-container {
+.search-container, .result-title {
   text-align: center;
 }
 
@@ -9,6 +9,7 @@
   margin: 7px 5px;
   outline: none;
   padding: 5px;
+  width: 200px;
 }
 
 .button-search {
@@ -29,4 +30,26 @@
 .page-search {
   background-color: #809bce;
   min-height: 100vh;
+}
+
+.result-title {
+  padding: 10px;
+}
+
+.albums-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.album {
+  background-color: rgba(255, 255, 255, 0.616);
+  border-radius: 8px;
+  color: black;
+  display: block;
+  flex-basis: 30%;
+  flex-grow: 1;
+  margin: 10px;
+  padding: 10px;
+  text-decoration: none;
 }
