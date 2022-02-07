@@ -53,3 +53,8 @@ h1 {
 .submit-button:hover {
   background-color: rgba(9, 13, 243, 0.5);
 }
+
+.submit-button:disabled {
+  background-color: rgba(0, 0, 255, 0.26);
+  cursor: not-allowed;
+}
