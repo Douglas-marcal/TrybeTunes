@@ -54,7 +54,7 @@ class MusicCard extends Component {
   }
 
   render() {
-    const { playlist } = this.props;
+    const { playlist, checkForUpdate } = this.props;
     const { isLoading, songData } = this.state;
     return (
       <div>
@@ -83,6 +83,9 @@ class MusicCard extends Component {
                           onChange={ (event) => {
                             this.addFavoriteSong(event);
                             this.removeFavoriteSong(event);
+                            if (checkForUpdate) {
+                              checkForUpdate();
+                            }
                           } }
                           checked={
                             songData
@@ -105,6 +108,11 @@ class MusicCard extends Component {
 
 MusicCard.propTypes = {
   playlist: PropTypes.arrayOf(PropTypes.object).isRequired,
+  checkForUpdate: PropTypes.func,
+};
+
+MusicCard.defaultProps = {
+  checkForUpdate: false,
 };
 
 export default MusicCard;

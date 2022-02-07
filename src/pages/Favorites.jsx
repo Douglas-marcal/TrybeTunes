@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import { Header, Loading } from '../components';
-import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import { Header, Loading, MusicCard } from '../components';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Favorites extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       isLoading: true,
-      songData: [],
+      favoriteSongs: [],
     };
 
-    this.addFavoriteSong = this.addFavoriteSong.bind(this);
-    this.removeFavoriteSong = this.removeFavoriteSong.bind(this);
     this.getFavoriteSong = this.getFavoriteSong.bind(this);
+    this.checkForUpdate = this.checkForUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -21,75 +20,32 @@ class Favorites extends Component {
   }
 
   getFavoriteSong() {
-    getFavoriteSongs().then((songData) => {
-      this.setState(() => ({ songData, isLoading: false }));
+    getFavoriteSongs().then((favoriteSongs) => {
+      this.setState({
+        favoriteSongs,
+        isLoading: false,
+      });
     });
   }
 
-  addFavoriteSong({ target: { checked, id } }) {
-    if (checked) {
-      this.setState({ isLoading: true });
-      const { songData } = this.state;
-      const objectSong = songData.find(({ trackId }) => +trackId === +id);
-      addSong(objectSong).then(() => {
-        this.setState((prevState) => ({
-          isLoading: false,
-          songData: [...prevState.songData, objectSong],
-        }
-        ));
-      });
-    }
-  }
-
-  removeFavoriteSong({ target: { checked, id } }) {
-    if (!checked) {
-      this.setState({ isLoading: true });
-      const { songData } = this.state;
-      const objectSong = songData.find(({ trackId }) => +id === +trackId);
-      removeSong(objectSong).then(() => {
-        this.getFavoriteSong();
-      });
-    }
+  checkForUpdate() {
+    this.getFavoriteSong();
   }
 
   render() {
-    const { isLoading, songData } = this.state;
+    const { isLoading, favoriteSongs } = this.state;
     return (
       <div data-testid="page-favorites">
         <Header />
         {
-          isLoading ? <Loading /> : (
-            songData
-              .filter(({ trackName }) => trackName)
-              .map(({ trackName, previewUrl, trackId }) => (
-                <div key={ trackId }>
-                  <p>{trackName}</p>
-                  <audio data-testid="audio-component" src={ previewUrl } controls>
-                    <track kind="captions" />
-                    O seu navegador não suporta o elemento
-                    {' '}
-                    <code>audio</code>
-                    .
-                  </audio>
-                  <label htmlFor={ trackId }>
-                    Favorita
-                    <input
-                      data-testid={ `checkbox-music-${trackId}` }
-                      type="checkbox"
-                      id={ trackId }
-                      onChange={ (event) => {
-                        this.addFavoriteSong(event);
-                        this.removeFavoriteSong(event);
-                      } }
-                      checked={
-                        songData
-                          .some(({ trackId: songID }) => songID === trackId)
-                      }
-                    />
-                  </label>
-                </div>
-              ))
-          )
+          isLoading
+            ? <Loading />
+            : (
+              <MusicCard
+                playlist={ favoriteSongs }
+                checkForUpdate={ this.checkForUpdate }
+              />
+            )
         }
       </div>
     );
