@@ -1,0 +1,19 @@
+.page-profile {
+  align-items: center;
+  background-color: #809bce;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  min-height: calc(100vh - 65px);
+}
+
+.page-profile p {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.button-edit-profile {
+  border: none;
+  padding: 5px;
+}

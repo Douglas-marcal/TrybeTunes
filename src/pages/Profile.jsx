@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Loading } from '../components';
 import { getUser } from '../services/userAPI';
+import '../styles/Profile.css';
 
 class Profile extends Component {
   constructor() {
@@ -22,12 +23,12 @@ class Profile extends Component {
   render() {
     const { userInfo, isLoading } = this.state;
     return (
-      <div>
+      <div className="container-page-profile">
         <Header />
 
         {
           isLoading ? <Loading /> : (
-            <div data-testid="page-profile">
+            <div data-testid="page-profile" className="page-profile">
 
               <img
                 data-testid="profile-image"
@@ -35,7 +36,15 @@ class Profile extends Component {
                 alt={ `Foto de ${userInfo.name}` }
               />
 
-              <Link to="/profile/edit"><button type="button">Editar perfil</button></Link>
+              <Link to="/profile/edit">
+                <button
+                  type="button"
+                  className="button-edit-profile"
+                >
+                  Editar perfil
+                </button>
+
+              </Link>
 
               <p>
                 <span>Nome: </span>
