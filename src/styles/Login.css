@@ -16,7 +16,7 @@
   align-items: center;
   background-color: black;
   border-radius: 20px;
-  box-shadow: 2px 5px 10px 5px rgba(255, 255, 255, 0.87);
+  box-shadow: 0 0 70px 60px rgba(255, 255, 255, 0.445);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,6 +55,6 @@ h1 {
 }
 
 .submit-button:disabled {
-  background-color: rgba(0, 0, 255, 0.26);
+  background-color: rgba(202, 202, 247, 0.76);
   cursor: not-allowed;
 }
