@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Header, MusicCard } from '../components';
 import getMusics from '../services/musicsAPI';
-// import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import '../styles/Album.css';
 
 class Album extends Component {
   constructor() {
@@ -36,7 +36,7 @@ class Album extends Component {
       collectionName = firstArtist.collectionName;
     }
     return (
-      <div data-testid="page-album">
+      <div data-testid="page-album" className="page-album">
         <Header />
         <h2 data-testid="artist-name">{artistName}</h2>
         <h3 data-testid="album-name">{collectionName}</h3>

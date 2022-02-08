@@ -60,13 +60,20 @@ class MusicCard extends Component {
       <div>
         {
           isLoading ? <Loading /> : (
-            <div>
+            <div className="music-card-container">
               {
                 playlist
                   .filter(({ trackName }) => trackName)
-                  .map(({ trackName, previewUrl, trackId }) => (
-                    <div key={ trackId }>
+                  .map(({
+                    trackName,
+                    previewUrl,
+                    trackId,
+                    artworkUrl100,
+                    collectionName,
+                  }) => (
+                    <div className="music-card" key={ trackId }>
                       <p>{trackName}</p>
+                      <img src={ artworkUrl100 } alt={ collectionName } />
                       <audio data-testid="audio-component" src={ previewUrl } controls>
                         <track kind="captions" />
                         O seu navegador não suporta o elemento
@@ -79,6 +86,7 @@ class MusicCard extends Component {
                         <input
                           data-testid={ `checkbox-music-${trackId}` }
                           type="checkbox"
+                          className="favorite-checkbox"
                           id={ trackId }
                           onChange={ (event) => {
                             this.addFavoriteSong(event);
@@ -112,7 +120,7 @@ MusicCard.propTypes = {
 };
 
 MusicCard.defaultProps = {
-  checkForUpdate: false,
+  checkForUpdate: undefined,
 };
 
 export default MusicCard;
