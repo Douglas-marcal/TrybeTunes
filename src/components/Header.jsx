@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
 import '../styles/Header.css';
@@ -47,15 +47,30 @@ class Header extends Component {
               )
           }
           <ul className="menu-container">
-            <Link to="/search">
+            <NavLink
+              to="/search"
+              style={ (isActive) => ({
+                color: isActive ? 'yellow' : 'white',
+              }) }
+            >
               <li data-testid="link-to-search">Pesquisa</li>
-            </Link>
-            <Link to="/favorites">
+            </NavLink>
+            <NavLink
+              to="/favorites"
+              style={ (isActive) => ({
+                color: isActive ? 'yellow' : 'white',
+              }) }
+            >
               <li data-testid="link-to-favorites">Favoritos</li>
-            </Link>
-            <Link to="/profile">
+            </NavLink>
+            <NavLink
+              to="/profile"
+              style={ (isActive) => ({
+                color: isActive ? 'yellow' : 'white',
+              }) }
+            >
               <li data-testid="link-to-profile">Perfil</li>
-            </Link>
+            </NavLink>
           </ul>
         </div>
       </header>
