@@ -62,7 +62,7 @@ class Search extends Component {
           isLoading
             ? <Loading />
             : (
-              <form className="search-container">
+              <form className="search-container" onSubmit={ this.requestAPI }>
                 <input
                   data-testid="search-artist-input"
                   type="text"
@@ -73,10 +73,9 @@ class Search extends Component {
                 />
                 <button
                   data-testid="search-artist-button"
-                  type="button"
+                  type="submit"
                   className="button-search"
                   disabled={ buttonDisabled }
-                  onClick={ this.requestAPI }
                 >
                   Pesquisar
                 </button>
