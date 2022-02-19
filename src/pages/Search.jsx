@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Header, Loading } from '../components';
+import { Link } from 'react-router-dom';
+import { Header, Loading, NavBar } from '../components';
 import searchAlbums from '../services/searchAlbumsAPI';
 import '../styles/Search.css';
 
@@ -58,7 +58,8 @@ class Search extends Component {
     return (
       <div data-testid="page-search" className="page-search">
         <Header />
-        <ul className="menu-container-mobile">
+        <NavBar />
+        {/* <ul className="menu-container-mobile">
           <NavLink to="/search" activeClassName="selected" className="link">
             <li data-testid="link-to-search">Pesquisa</li>
           </NavLink>
@@ -68,7 +69,7 @@ class Search extends Component {
           <NavLink to="/profile" activeClassName="selected" className="link">
             <li data-testid="link-to-profile">Perfil</li>
           </NavLink>
-        </ul>
+        </ul> */}
 
         {
           isLoading

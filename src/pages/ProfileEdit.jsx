@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link, NavLink, Redirect } from 'react-router-dom';
-import { Header, Loading } from '../components';
+import { Redirect } from 'react-router-dom';
+import { Header, Loading, NavBar } from '../components';
 import { getUser, updateUser } from '../services/userAPI';
 import '../styles/ProfileEdit.css';
 
@@ -67,17 +67,7 @@ class ProfileEdit extends Component {
     return (
       <div className="page-profile-edit">
         <Header />
-        <ul className="menu-container-mobile">
-          <NavLink to="/search" activeClassName="selected" className="link">
-            <li data-testid="link-to-search">Pesquisa</li>
-          </NavLink>
-          <NavLink to="/favorites" activeClassName="selected" className="link">
-            <li data-testid="link-to-favorites">Favoritos</li>
-          </NavLink>
-          <NavLink to="/profile" activeClassName="selected" className="link">
-            <li data-testid="link-to-profile">Perfil</li>
-          </NavLink>
-        </ul>
+        <NavBar />
 
         {
           isLoading ? <Loading /> : (

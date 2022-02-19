@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Header, Loading } from '../components';
+import { Link } from 'react-router-dom';
+import { Header, Loading, NavBar } from '../components';
 import { getUser } from '../services/userAPI';
 import '../styles/Profile.css';
 
@@ -25,17 +25,7 @@ class Profile extends Component {
     return (
       <div className="container-page-profile">
         <Header />
-        <ul className="menu-container-mobile">
-          <NavLink to="/search" activeClassName="selected" className="link">
-            <li data-testid="link-to-search">Pesquisa</li>
-          </NavLink>
-          <NavLink to="/favorites" activeClassName="selected" className="link">
-            <li data-testid="link-to-favorites">Favoritos</li>
-          </NavLink>
-          <NavLink to="/profile" activeClassName="selected" className="link">
-            <li data-testid="link-to-profile">Perfil</li>
-          </NavLink>
-        </ul>
+        <NavBar />
 
         {
           isLoading ? <Loading /> : (
