@@ -71,7 +71,7 @@ class ProfileEdit extends Component {
         {
           isLoading ? <Loading /> : (
             <div data-testid="page-profile-edit" className="profile-edit">
-              <form className="form-edit-container">
+              <form className="form-edit-container" onSubmit={ this.saveChanges }>
 
                 <div className="image-url-container">
                   <img
@@ -141,8 +141,7 @@ class ProfileEdit extends Component {
 
                 <button
                   data-testid="edit-button-save"
-                  type="button"
-                  onClick={ this.saveChanges }
+                  type="submit"
                   disabled={ isDisabled }
                   className="button-save-profile"
                 >
