@@ -38,7 +38,12 @@ class Favorites extends Component {
     return (
       <div data-testid="page-favorites" className="page-favorites">
         <Header />
-        <h2>Músicas Favoritas</h2>
+        {
+          favoriteSongs.length
+            ? <h2>Músicas Favoritas</h2>
+            : <h2>Não há músicas favoritas</h2>
+        }
+
         {
           isLoading
             ? <Loading />

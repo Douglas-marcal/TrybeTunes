@@ -1,5 +1,6 @@
 .page-favorites {
   background-color: #809bce;
+  min-height: 100vh;
 }
 
 .page-favorites h2 {
