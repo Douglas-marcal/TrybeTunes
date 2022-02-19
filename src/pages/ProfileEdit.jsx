@@ -88,6 +88,7 @@ class ProfileEdit extends Component {
                       value={ image }
                       onChange={ this.updateInfos }
                       placeholder="Insira a URL da imagem"
+                      className="input-image"
                     />
                   </label>
                 </div>
@@ -123,14 +124,18 @@ class ProfileEdit extends Component {
 
                 <label htmlFor="description">
                   Descrição:
-                  <input
+                  <textarea
                     data-testid="edit-input-description"
-                    type="text"
-                    name="description"
+                    placeholder="Descrição"
                     value={ description }
                     onChange={ this.updateInfos }
-                    placeholder="Descrição"
+                    name="description"
+                    id="description"
+                    cols="20"
+                    rows="5"
+                    className="input-100 description"
                   />
+
                 </label>
                 <br />
 
@@ -139,6 +144,7 @@ class ProfileEdit extends Component {
                   type="button"
                   onClick={ this.saveChanges }
                   disabled={ isDisabled }
+                  className="button-save-profile"
                 >
                   Salvar Alterações
                 </button>
