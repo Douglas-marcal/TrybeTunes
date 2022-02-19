@@ -53,7 +53,7 @@ class Login extends Component {
 
             <h1>Aqui só toca SUCESSO!</h1>
 
-            <form className="form-container">
+            <form className="form-container" onSubmit={ this.onClickButtonLogin }>
               <input
                 data-testid="login-name-input"
                 type="text"
@@ -65,10 +65,9 @@ class Login extends Component {
 
               <button
                 data-testid="login-submit-button"
-                type="button"
+                type="submit"
                 className="submit-button"
                 disabled={ isInvalidName }
-                onClick={ this.onClickButtonLogin }
               >
                 Entrar
               </button>

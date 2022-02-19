@@ -58,3 +58,16 @@ h1 {
   background-color: rgba(202, 202, 247, 0.76);
   cursor: not-allowed;
 }
+
+@media screen and ( max-width : 480px ) {
+
+  .form-container {
+    margin: 20px;
+    min-height: 300px;
+    padding: 20px;
+  }
+
+  .name-input {
+    padding: 12px;
+  }
+}
