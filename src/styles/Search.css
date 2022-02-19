@@ -27,6 +27,11 @@
   background-color: rgba(9, 13, 243, 0.5);
 }
 
+.button-search:disabled {
+  background-color: rgba(202, 202, 247, 0.76);
+  cursor: not-allowed;
+}
+
 .page-search {
   background-color: #809bce;
   min-height: 100vh;
