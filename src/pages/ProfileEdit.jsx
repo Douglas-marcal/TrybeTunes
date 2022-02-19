@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Header, Loading } from '../components';
 import { getUser, updateUser } from '../services/userAPI';
+import '../styles/ProfileEdit.css';
 
 class ProfileEdit extends Component {
   constructor() {
@@ -64,48 +65,74 @@ class ProfileEdit extends Component {
     if (redirect) return (<Redirect to="/profile" />);
 
     return (
-      <div>
+      <div className="page-profile-edit">
         <Header />
 
         {
           isLoading ? <Loading /> : (
-            <div data-testid="page-profile-edit">
-              <form>
-                <input
-                  data-testid="edit-input-name"
-                  type="text"
-                  name="name"
-                  value={ name }
-                  onChange={ this.updateInfos }
-                  placeholder="Nome"
-                />
+            <div data-testid="page-profile-edit" className="profile-edit">
+              <form className="form-edit-container">
 
-                <input
-                  data-testid="edit-input-email"
-                  type="text"
-                  name="email"
-                  value={ email }
-                  onChange={ this.updateInfos }
-                  placeholder="E-mail"
-                />
+                <div className="image-url-container">
+                  <img
+                    src={ image }
+                    alt={ `Foto de ${name}` }
+                    className="profile-image"
+                  />
+                  <label htmlFor="image" className="label-image">
+                    URL da imagem:
+                    <input
+                      data-testid="edit-input-image"
+                      type="text"
+                      name="image"
+                      value={ image }
+                      onChange={ this.updateInfos }
+                      placeholder="Insira a URL da imagem"
+                    />
+                  </label>
+                </div>
 
-                <input
-                  data-testid="edit-input-description"
-                  type="text"
-                  name="description"
-                  value={ description }
-                  onChange={ this.updateInfos }
-                  placeholder="Descrição"
-                />
+                <label htmlFor="name">
+                  Nome:
+                  <input
+                    data-testid="edit-input-name"
+                    type="text"
+                    name="name"
+                    id="name"
+                    value={ name }
+                    onChange={ this.updateInfos }
+                    placeholder="Nome"
+                    className="input-100"
+                  />
+                </label>
+                <br />
 
-                <input
-                  data-testid="edit-input-image"
-                  type="text"
-                  name="image"
-                  value={ image }
-                  onChange={ this.updateInfos }
-                  placeholder="Imagem"
-                />
+                <label htmlFor="email">
+                  Email:
+                  <input
+                    data-testid="edit-input-email"
+                    type="text"
+                    name="email"
+                    value={ email }
+                    onChange={ this.updateInfos }
+                    placeholder="E-mail"
+                    className="input-100"
+                  />
+                </label>
+                <br />
+
+                <label htmlFor="description">
+                  Descrição:
+                  <input
+                    data-testid="edit-input-description"
+                    type="text"
+                    name="description"
+                    value={ description }
+                    onChange={ this.updateInfos }
+                    placeholder="Descrição"
+                  />
+                </label>
+                <br />
 
                 <button
                   data-testid="edit-button-save"

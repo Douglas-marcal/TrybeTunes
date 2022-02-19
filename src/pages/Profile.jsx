@@ -22,7 +22,6 @@ class Profile extends Component {
 
   render() {
     const { userInfo, isLoading } = this.state;
-    console.log(userInfo);
     return (
       <div className="container-page-profile">
         <Header />
