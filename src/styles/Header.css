@@ -46,3 +46,35 @@
   align-items: center;
   display: flex;
 }
+
+.menu-container-mobile {
+  display: none;
+}
+
+@media screen and ( max-width : 600px ) {
+
+  .menu-container {
+    display: none;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .menu-container-mobile {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .menu-container-mobile a {
+    border: 1px solid white;
+    color: white;
+    flex-basis: 30%;
+    flex-grow: 1;
+    list-style: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+  }
+}

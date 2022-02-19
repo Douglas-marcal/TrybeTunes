@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Header, Loading, MusicCard } from '../components';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import '../styles/Favorites.css';
@@ -38,6 +39,18 @@ class Favorites extends Component {
     return (
       <div data-testid="page-favorites" className="page-favorites">
         <Header />
+        <ul className="menu-container-mobile">
+          <Link to="/search">
+            <li data-testid="link-to-search">Pesquisa</li>
+          </Link>
+          <Link to="/favorites">
+            <li data-testid="link-to-favorites">Favoritos</li>
+          </Link>
+          <Link to="/profile">
+            <li data-testid="link-to-profile">Perfil</li>
+          </Link>
+        </ul>
+
         {
           favoriteSongs.length
             ? <h2>Músicas Favoritas</h2>

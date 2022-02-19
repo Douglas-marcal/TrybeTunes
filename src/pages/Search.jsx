@@ -58,6 +58,18 @@ class Search extends Component {
     return (
       <div data-testid="page-search" className="page-search">
         <Header />
+        <ul className="menu-container-mobile">
+          <Link to="/search">
+            <li data-testid="link-to-search">Pesquisa</li>
+          </Link>
+          <Link to="/favorites">
+            <li data-testid="link-to-favorites">Favoritos</li>
+          </Link>
+          <Link to="/profile">
+            <li data-testid="link-to-profile">Perfil</li>
+          </Link>
+        </ul>
+
         {
           isLoading
             ? <Loading />
