@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Header, Loading, MusicCard } from '../components';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import '../styles/Favorites.css';
@@ -40,15 +40,15 @@ class Favorites extends Component {
       <div data-testid="page-favorites" className="page-favorites">
         <Header />
         <ul className="menu-container-mobile">
-          <Link to="/search">
+          <NavLink to="/search" activeClassName="selected" className="link">
             <li data-testid="link-to-search">Pesquisa</li>
-          </Link>
-          <Link to="/favorites">
+          </NavLink>
+          <NavLink to="/favorites" activeClassName="selected" className="link">
             <li data-testid="link-to-favorites">Favoritos</li>
-          </Link>
-          <Link to="/profile">
+          </NavLink>
+          <NavLink to="/profile" activeClassName="selected" className="link">
             <li data-testid="link-to-profile">Perfil</li>
-          </Link>
+          </NavLink>
         </ul>
 
         {

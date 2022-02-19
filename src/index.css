@@ -17,3 +17,13 @@ code {
   display: flex;
   justify-content: center;
 }
+
+
+.link {
+  color: white;
+}
+
+.selected {
+  background-color: white;
+  color: black;
+}

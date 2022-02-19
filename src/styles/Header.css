@@ -69,7 +69,6 @@
 
   .menu-container-mobile a {
     border: 1px solid white;
-    color: white;
     flex-basis: 30%;
     flex-grow: 1;
     list-style: none;
