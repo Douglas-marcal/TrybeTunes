@@ -10,10 +10,32 @@
 
 .page-profile p {
   border: 1px solid black;
+  border-radius: 4px;
+  max-width: 500px;
+  min-width: 250px;
   padding: 10px;
+  word-break: break-word;
 }
 
 .button-edit-profile {
   border: none;
-  padding: 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  padding: 6px;
+  transition: 400ms;
+}
+
+.button-edit-profile:hover {
+  background-color: rgba(255, 255, 255, 0.664);
+}
+
+.profile-image {
+  width: 90px;
+}
+
+.image-button-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-width: 250px;
 }

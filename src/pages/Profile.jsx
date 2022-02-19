@@ -22,6 +22,7 @@ class Profile extends Component {
 
   render() {
     const { userInfo, isLoading } = this.state;
+    console.log(userInfo);
     return (
       <div className="container-page-profile">
         <Header />
@@ -29,23 +30,37 @@ class Profile extends Component {
         {
           isLoading ? <Loading /> : (
             <div data-testid="page-profile" className="page-profile">
+              <div className="image-button-container">
+                {
+                  userInfo.image
+                    ? (
+                      <img
+                        data-testid="profile-image"
+                        src={ userInfo.image }
+                        alt={ `Foto de ${userInfo.name}` }
+                        className="profile-image"
+                      />
+                    )
+                    : (
+                      <img
+                        data-testid="profile-image"
+                        src="https://cdn.pixabay.com/photo/2016/03/31/14/47/avatar-1292817_1280.png"
+                        alt={ `Foto de ${userInfo.name}` }
+                        className="profile-image"
+                      />
+                    )
+                }
 
-              <img
-                data-testid="profile-image"
-                src={ userInfo.image }
-                alt={ `Foto de ${userInfo.name}` }
-              />
+                <Link to="/profile/edit">
+                  <button
+                    type="button"
+                    className="button-edit-profile"
+                  >
+                    Editar perfil
+                  </button>
 
-              <Link to="/profile/edit">
-                <button
-                  type="button"
-                  className="button-edit-profile"
-                >
-                  Editar perfil
-                </button>
-
-              </Link>
-
+                </Link>
+              </div>
               <p>
                 <span>Nome: </span>
                 {userInfo.name}
