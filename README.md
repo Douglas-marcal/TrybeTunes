@@ -6,3 +6,5 @@ Este projeto foi desenvolvido durante o módulo de front-end na Trybe, escola de
 
 - React
 - React-Router
+
+Você pode acessar o projeto clicando [aqui](https://trybe-tunes-douglas-marcal.vercel.app/)
